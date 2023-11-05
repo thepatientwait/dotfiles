@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/herb/.config/i3status'
+let g:netrw_dirhist_3='/home/herb/.config'
+let g:netrw_dirhist_2='/home/herb/.config/i3'
+let g:netrw_dirhist_1='/home/herb/dotfiles/.git'

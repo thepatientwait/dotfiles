@@ -1,0 +1,96 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+  output_format = "i3bar"
+  colors = true
+  color_good = "#BEBEEF"
+  color_degraded = "#FE7734"
+  color_bad = "#900000"
+  markup = "pango"
+}
+
+
+#order += "ipv6"
+order += "wireless _first_"
+#order += "ethernet _first_"
+order += "battery percent"
+order += "battery time"
+#order += "disk /"
+#order += "load"
+order += "cpu_usage"
+order += "memory"
+order += "volume master"
+order += "tztime local"
+order += "tztime date"
+
+wireless _first_ {
+        format_up = "<span size='xx-large' rise='-5000'>󰖩</span> %essid"
+        format_down = "<span size='xx-large' rise='-5000'>󰖪</span>"
+}
+
+ethernet _first_ {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+battery percent {
+	status_chr = "󱐋"
+	status_bat = "󰂀"
+	status_full = "󰁹"
+        format = "%status %percentage"
+}
+
+battery time {
+	status_chr = "<span size='x-large' rise='-3500'>󱧥</span> "
+	status_bat = "<span size='x-large' rise='-3500'>󱧥</span> "
+	status_full = ""
+        format = "%status%remaining"
+}
+
+disk "/" {
+        format = "%avail"
+}
+
+load {
+        format = "%1min"
+}
+
+memory {
+        format = "<span size='xx-large' rise='-5000'></span> %percentage_used"
+        threshold_degraded = "1G"
+        format_degraded = "<span size='xx-large' rise='-5000'></span> LOW %free"
+}
+
+tztime local {
+        format = "<span size='xx-large' rise='-5000'></span> %time"
+	format_time = "%I:%M"
+}
+
+tztime date {
+        format = "<span size='x-large' rise='-2750'>󰃮</span> %time"
+	format_time = "%d/%m"
+}
+
+cpu_usage {
+	format = "<span size='xx-large' rise='-5000'></span> %usage"
+}
+
+#volume_master {
+#        format = "%volume"
+#        format_muted = "Muted"
+#        device = "default"
+#        mixer = "Master"
+#        mixer_idx = 0
+#}
+
+volume master {
+        format = "<span size='xx-large' rise='-5000'>󰕾</span> %volume"
+        format_muted = "<span size='xx-large' rise='-5000'>󰖁</span> %volume"
+        device = "pulse:alsa_output.pci-0000_00_1b.0.analog-stereo"
+}
