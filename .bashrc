@@ -115,3 +115,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export NNN_PLUG='f:finder;o:fzopen;p:mocq;l:moclyrics;d:diffs;t:nmount;i:imgview;v:preview-tui;c:! echo $nnn|xclip -selection clipboard*'
+export NNN_FIFO='/tmp/nnn.fifo'
+export PAGER='less -R'
+alias nnn='nnn -C -e'
+
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

@@ -41,7 +41,7 @@ ethernet _first_ {
 
 battery percent {
 	status_chr = "󱐋"
-	status_bat = "󰂀"
+	status_bat = "<span size='x-large'>󰂀</span>"
 	status_full = "󰁹"
         format = "%status %percentage"
 }
@@ -73,7 +73,8 @@ tztime local {
 }
 
 tztime date {
-        format = "<span size='x-large' rise='-2750'>󰃮</span> %time"
+        # format = "<span size='x-large' rise='-2750'>󰃮</span> %time"
+        format = "yep %time"
 	format_time = "%d/%m"
 }
 
