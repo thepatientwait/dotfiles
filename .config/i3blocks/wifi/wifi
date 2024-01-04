@@ -13,18 +13,39 @@
 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 #------------------------------------------------------------------------
 if [[ -z "$INTERFACE" ]] ; then
     INTERFACE="${BLOCK_INSTANCE:-wlan0}"
 fi
 #------------------------------------------------------------------------
 
-COLOR_GE80=${COLOR_GE80:-#00FF00}
-COLOR_GE60=${COLOR_GE60:-#FFF600}
-COLOR_GE40=${COLOR_GE40:-#FFAE00}
-COLOR_LOWR=${COLOR_LOWR:-#FF0000}
-COLOR_DOWN=${COLOR_DOWN:-#FF0000}
+COLOR_GE80=${COLOR_GE80:-#beefbe}
+COLOR_GE60=${COLOR_GE60:-#efefbe}
+COLOR_GE40=${COLOR_GE40:-#efdfbe}
+COLOR_LOWR=${COLOR_LOWR:-#efbebe}
+COLOR_DOWN=${COLOR_DOWN:-#efbebe}
+
+
+# custom code to check usb and eth connection
+
+if ip link show enp1s0f0 | grep -q " UP "; then
+    echo "ETH"
+    echo "ETH"
+    echo $COLOR_GE80
+    exit
+fi
+
+if ip link show enp0s20u1 | grep -q " UP "; then
+    echo "USB"
+    echo "USB"
+    echo $COLOR_GE80
+    exit
+elif ip link show enp0s20u | grep -q " UP "; then
+    echo "USB"
+    echo "USB"
+    echo $COLOR_GE80
+    exit
+fi
 
 # As per #36 -- It is transparent: e.g. if the machine has no battery or wireless
 # connection (think desktop), the corresponding block should not be displayed.
@@ -32,8 +53,8 @@ COLOR_DOWN=${COLOR_DOWN:-#FF0000}
 
 # If the wifi interface exists but no connection is active, "down" shall be displayed.
 if [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]]; then
-    echo "down"
-    echo "down"
+    echo "DIS"
+    echo "DIS"
     echo $COLOR_DOWN
     exit
 fi
