@@ -40,7 +40,7 @@ if ip link show enp0s20u1 | grep -q " UP "; then
     echo "USB"
     echo $COLOR_GE80
     exit
-elif ip link show enp0s20u | grep -q " UP "; then
+elif ip link show enp0s20u2 | grep -q " UP "; then
     echo "USB"
     echo "USB"
     echo $COLOR_GE80
