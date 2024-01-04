@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Define the dictionary of replacements (same as before)
+declare -A replacements=(
+    ["?"]="?"
+    ["mm"]=""
+    ["="]=""
+    ["///"]=""
+    ["//"]=""
+    ["**"]=""
+    ["*/*"]=""
+    ["/"]=""
+    ["."]=""
+    ["x"]=""
+    ["x/"]=""
+    ["*"]=""
+    ["*/"]=""
+    ["m"]=""
+    ["o"]=""
+    ["/!/"]=""
+    ["!/"]=""
+    ["*!*"]=""
+    ["mmm"]=""
+)
+
+# Fetch the string using curl
+full_string=$(curl -s https://wttr.in/brisbane?format="%x+%t")
+
+words=( $full_string )
+
+if [[ ${replacements[${words[0]}]} ]]; then
+    modified_string="${replacements[${words[0]}]} ${words[@]:1}"
+else
+    modified_string="$full_string"
+fi
+
+echo "$modified_string"
