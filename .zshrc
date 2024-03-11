@@ -111,6 +111,8 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 alias qutvpn="/opt/cisco/anyconnect/bin/vpnui & disown"
 alias logseq-sync="onedrive --single-directory logseq --synchronize"
 
+alias lyra="sh ssh.sh lyra"
+
 alias c="clear"
 alias r="exec zsh"
 alias logseq="~/Applications/logseq.AppImage & disown"
@@ -159,3 +161,4 @@ n ()
 COLUMNS=$(tput cols) 
 title="gm gamers, let's begin" 
 printf "%*s\n" $(((${#title}+$COLUMNS+16)/2)) "$title"
+
