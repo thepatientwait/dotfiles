@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #------------------------------------------------------------------------
 if [[ -z "$INTERFACE" ]] ; then
-    INTERFACE="${BLOCK_INSTANCE:-wlan0}"
+    INTERFACE="${BLOCK_INSTANCE:-wlp2s0}"
 fi
 #------------------------------------------------------------------------
 
@@ -28,19 +28,14 @@ COLOR_DOWN=${COLOR_DOWN:-#efbebe}
 
 # custom code to check usb and eth connection
 
-if ip link show enp1s0f0 | grep -q " UP "; then
+if ip link show enp0s31f6 | grep -q " UP "; then
     echo "ETH"
     echo "ETH"
     echo $COLOR_GE80
     exit
 fi
 
-if ip link show enp0s20u1 | grep -q " UP "; then
-    echo "USB"
-    echo "USB"
-    echo $COLOR_GE80
-    exit
-elif ip link show enp0s20u2 | grep -q " UP "; then
+if ip link show usb0 | grep -q "BROADCAST"; then
     echo "USB"
     echo "USB"
     echo $COLOR_GE80
@@ -78,3 +73,4 @@ elif [[ $QUALITY -ge 40 ]]; then
 else
     echo $COLOR_LOWR
 fi
+
