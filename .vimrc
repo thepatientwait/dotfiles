@@ -14,4 +14,3 @@ hi LineNr guibg=NONE ctermbg=NONE
 
 vnoremap <C-V> "0p 
 vnoremap <C-C> "0y
-
