@@ -1,0 +1,15 @@
+/**
+ *
+ * Author : me :) 
+ * 
+ * Colors
+ **/
+
+* {
+    background:     #24242EFF;
+    background-alt: #1d1d24FF;
+    foreground:     #7272A1FF;
+    selected:       #BEBEEFFF;
+    active:         #BEBEEFFF;
+    urgent:         #FE7734FF;
+}
