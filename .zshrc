@@ -108,7 +108,7 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 # eval "$(starship init zsh)"
 
 # custom aliases
-alias qutvpn="/opt/cisco/anyconnect/bin/vpnui & disown"
+alias qutvpn="/opt/cisco/secureclient/bin/vpnui & disown"
 alias logseq-sync="onedrive --single-directory logseq --synchronize"
 
 alias lyra="sh ssh.sh lyra"
@@ -117,12 +117,14 @@ alias c="clear"
 alias r="exec zsh"
 alias logseq="~/Applications/logseq.AppImage & disown"
 
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+alias cat='batcat'
 
 # NNN stuff
 export NNN_PLUG='f:finder;o:fzopen;p:mocq;l:moclyrics;d:diffs;t:nmount;i:imgview;v:preview-tui;c:! echo $nnn|xclip -selection clipboard*'
 export NNN_FIFO='/tmp/nnn.fifo'
-export PAGER='less -R'
+export PAGER='bat'
 # alias nnn='nnn -C -e'
 
 n ()
@@ -158,7 +160,15 @@ n ()
 
 
 # start message TODO: move to seperate script
-COLUMNS=$(tput cols) 
-title="gm gamers, let's begin" 
-printf "%*s\n" $(((${#title}+$COLUMNS+16)/2)) "$title"
+eval $(resize)
+clear
 
+rows="$(tput lines)"
+printf "%*s" $(($rows/4)) | tr ' ' '\n'
+
+title="gm gamers, let's begin" 
+printf "%*s\n" $(((${#title}+$COLUMNS)/2)) "$title"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

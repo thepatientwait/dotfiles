@@ -1,0 +1,9 @@
+#!/bin/bash
+
+STATUS=$(/opt/cisco/anyconnect/bin/vpn state | grep -m 1 -wo "Disconnected\|Connected")
+
+if [[ "${STATUS}" = "Connected" ]]; then
+  echo "QUT"
+  echo "QUT"
+  echo "#006CCC"
+fi

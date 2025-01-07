@@ -32,7 +32,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -62,7 +62,10 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '#24242e' -nf '#bebeef' -sb '#bebeef' -sf '#24242e' -fn 'SauceCodePro NFP Medium-14'
+# bindsym $mod+d exec --no-startup-id dmenu_run -nb '#24242e' -nf '#bebeef' -sb '#bebeef' -sf '#24242e' -fn 'SauceCodePro NFP Medium-14'
+bindsym $mod+d exec ".config/rofi/scripts/launcher_t1"
+bindsym $mod+x exec ".config/rofi/scripts/powermenu_t1"
+
 # A more modern dmenu replacement is rofi:
 # bindsym $mod+d exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -109,6 +112,9 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# sticky window toggle
+bindsym $mod+Shift+s sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -246,30 +252,31 @@ exec feh --bg-scale ~/backgrounds/dune-orange.jpg
 exec picom
 
 # mode for leave menu
-set $leave_menu Leave Menu: (1)Logout, (2)Suspend, (3)Hibernate, (4)Reboot, (5)Shutdown
-mode "$leave_menu" {
-    bindsym 1 exec --no-startup-id i3-msg exit, mode "default"
-    bindsym 2 exec --no-startup-id systemctl suspend, mode "default"
-    bindsym 3 exec --no-startup-id systemctl hibernate, mode "default"
-    bindsym 4 exec --no-startup-id systemctl reboot, mode "default"
-    bindsym 5 exec --no-startup-id systemctl poweroff, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Shift+Escape mode "$leave_menu"
+# set $leave_menu Leave Menu: (1)Logout, (2)Suspend, (3)Hibernate, (4)Reboot, (5)Shutdown
+# mode "$leave_menu" {
+#     bindsym 1 exec --no-startup-id i3-msg exit, mode "default"
+#     bindsym 2 exec --no-startup-id systemctl suspend, mode "default"
+#     bindsym 3 exec --no-startup-id systemctl hibernate, mode "default"
+#     bindsym 4 exec --no-startup-id systemctl reboot, mode "default"
+#     bindsym 5 exec --no-startup-id systemctl poweroff, mode "default"
+# 
+#     # back to normal: Enter or Escape
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+# bindsym $mod+Shift+Escape mode "$leave_menu"
 
 assign [class="firefox"] $ws1
 assign [class="kitty"] $ws2
 assign [class="Code"] $ws3
+assign [class="steam"] $ws3
 assign [class="Logseq"] $ws4
-for_window [class="Com.cisco.anyconnect.gui"] move scratchpad
+for_window [class="Com.cisco.secureclient.gui"] move scratchpad
 
 exec --no-startup-id firefox
 exec kitty
 
 bindsym $mod+n move workspace to output next
 
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+# bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+# bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-

@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if [ -n "$TMUX" ]; then
-   tmux detach -E "ssh \"$@\""
+   tmux detach -E "kitty +kitten ssh \"$@\""
 else
-   ssh "$@"
+   kitty +kitten ssh "$@"
 fi
 

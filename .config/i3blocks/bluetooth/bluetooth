@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+STATUS=$(bluetooth | grep -wo 'off')
+CONNECTED=$(bluetoothctl devices | cut -f2 -d ' ' | while read uuid; do bluetoothctl info $uuid; done | grep -e "Connected" | grep -wo "yes")
+
+
+if [[ "${STATUS}" = "off" ]]; then
+  echo "󰂲"
+  echo "󰂲"
+  echo "#49495a"
+  exit
+elif [[ "${CONNECTED}" = "yes" ]]; then
+  NAME=$(bluetoothctl devices | cut -f2 -d ' ' | while read uuid; do bluetoothctl info $uuid; done | grep -e "Name" | cut -f2 -d ' ')
+  echo "󰂱 ${NAME}"
+  echo "󰂱 ${NAME}"
+  echo "#0082FC"
+else
+  echo "󰂯"
+  echo "󰂯"
+  echo "#0082FC"
+fi
+
+
