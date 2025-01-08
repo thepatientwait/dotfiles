@@ -159,7 +159,7 @@ n ()
 }
 
 
-# start message TODO: move to seperate script
+start message TODO: move to seperate script
 eval $(resize)
 clear
 
@@ -169,6 +169,3 @@ printf "%*s" $(($rows/4)) | tr ' ' '\n'
 title="gm gamers, let's begin" 
 printf "%*s\n" $(((${#title}+$COLUMNS)/2)) "$title"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
