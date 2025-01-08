@@ -124,7 +124,7 @@ alias cat='batcat'
 # NNN stuff
 export NNN_PLUG='f:finder;o:fzopen;p:mocq;l:moclyrics;d:diffs;t:nmount;i:imgview;v:preview-tui;c:! echo $nnn|xclip -selection clipboard*'
 export NNN_FIFO='/tmp/nnn.fifo'
-export PAGER='bat'
+# export PAGER='bat'
 # alias nnn='nnn -C -e'
 
 n ()
