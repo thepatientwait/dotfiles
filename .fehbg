@@ -1,2 +1,3 @@
 #!/bin/sh
-feh --no-fehbg --bg-scale '/home/herb/backgrounds/disco1.png' 
+
+shuf -e -n1 $HOME/backgrounds/* | xargs feh --bg-scale --no-fehbg 
