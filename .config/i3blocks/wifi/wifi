@@ -19,9 +19,10 @@
 # fi
 #------------------------------------------------------------------------
 
-interface_name_command="nmcli device | grep -e "wifi[^-p2p]" | sed 's/ \+ /\t/g' | cut -f1"
+interface_details=$(nmcli device | grep -e "wifi[^-p2p]" | sed 's/ \+ /\t/g')
 
-INTERFACE=$(eval "$interface_name_command")
+INTERFACE=$(echo "$interface_details" | cut -f1)
+# SSID=$(echo "$interface_details" | cut -f4)
 
 if [[ -z "$INTERFACE" ]] ; then
     exit
@@ -64,7 +65,8 @@ fi
 
 #------------------------------------------------------------------------
 
-QUALITY=$(iw dev ${INTERFACE} link | grep 'dBm$' | grep -Eoe '-[0-9]{2}' | awk '{print  ($1 > -50 ? 100 :($1 < -100 ? 0 : ($1+100)*2))}')
+# QUALITY=$(iw dev ${INTERFACE} link | grep 'dBm$' | grep -Eoe '-[0-9]{2}' | awk '{print  ($1 > -50 ? 100 :($1 < -100 ? 0 : ($1+100)*2))}')
+QUALITY=$(nmcli device wifi | grep -E "^\*" | sed 's/ \+ /\t/g' | cut -f7)
 
 #------------------------------------------------------------------------
 
