@@ -14,10 +14,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #------------------------------------------------------------------------
-if [[ -z "$INTERFACE" ]] ; then
-    INTERFACE="${BLOCK_INSTANCE:-wlp2s0}"
-fi
+# if [[ -z "$INTERFACE" ]] ; then
+#     INTERFACE="${BLOCK_INSTANCE:-wlp2s0}"
+# fi
 #------------------------------------------------------------------------
+
+interface_name_command="nmcli device | grep -e "wifi[^-p2p]" | sed 's/ \+ /\t/g' | cut -f1"
+
+INTERFACE=$(eval "$interface_name_command")
+
+if [[ -z "$INTERFACE" ]] ; then
+    exit
+fi
 
 COLOR_GE80=${COLOR_GE80:-#beefbe}
 COLOR_GE60=${COLOR_GE60:-#efefbe}
