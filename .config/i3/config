@@ -274,7 +274,6 @@ assign [class="Logseq"] $ws4
 for_window [class="Com.cisco.secureclient.gui"] move scratchpad
 
 exec --no-startup-id firefox
-exec kitty
 
 bindsym $mod+n move workspace to output next
 
