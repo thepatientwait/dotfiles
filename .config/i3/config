@@ -248,7 +248,7 @@ bar {
   }
 }
 
-exec feh --bg-scale ~/backgrounds/dune-orange.jpg
+exec ~/.fehbg
 exec picom
 
 # mode for leave menu
